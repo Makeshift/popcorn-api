@@ -1,0 +1,14 @@
+version: '3'
+services:
+  api:
+    image: makeshift27015/popcorn-api
+    build: .
+    restart: always
+    env_file:
+      - .env
+    labels:
+      - proxy.hosts=popcorn-api.makeshift.ninja,popcorn-api.local.makeshift.ninja,popcorn-api.public.makeshift.ninja
+      - proxy.port=80
+      - proxy.isPublic
+    ports:
+      - 80:80
